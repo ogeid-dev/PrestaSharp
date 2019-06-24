@@ -12,6 +12,7 @@ using RestSharp.Deserializers;
 using RestSharp;
 using RestSharp.Serialization;
 using RestSharp.Serialization.Xml;
+using System.Text.RegularExpressions;
 
 namespace Bukimedia.PrestaSharp.Deserializers
 {
@@ -31,7 +32,13 @@ namespace Bukimedia.PrestaSharp.Deserializers
         {
             if (string.IsNullOrEmpty(response.Content))
                 return default(T);
-
+            if (response.Content.StartsWith("\t"))
+            {
+                /*var regex = new Regex(Regex.Escape("o"));
+                var newText = regex.Replace("Hello World", "Foo", 1);*/
+                response.Content = response.Content.Replace("\t", "");
+            }
+            
             var doc = XDocument.Parse(response.Content);
             var root = doc.Root;
             if (RootElement.HasValue() && doc.Root != null)
