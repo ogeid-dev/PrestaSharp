@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
+    <TargetFrameworks>net451</TargetFrameworks>
     <RootNamespace>Bukimedia.PrestaSharp</RootNamespace>
     <AssemblyName>Bukimedia.PrestaSharp</AssemblyName>
     <Company>Bukimedia</Company>
@@ -22,9 +22,11 @@
     <Title>Bukimedia PrestaSharp</Title>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="RestSharp" Version="106.6.9" />
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <Reference Include="RestSharp">
+      <HintPath>..\RestSharp\RestSharp\bin\Debug\net451\RestSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
